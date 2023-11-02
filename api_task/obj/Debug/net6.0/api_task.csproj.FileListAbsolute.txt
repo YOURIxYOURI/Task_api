@@ -1,0 +1,7 @@
+D:\projects\api_task\obj\Debug\net6.0\api_task.csproj.AssemblyReference.cache
+D:\projects\api_task\obj\Debug\net6.0\api_task.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\api_task\obj\Debug\net6.0\api_task.AssemblyInfoInputs.cache
+D:\projects\api_task\obj\Debug\net6.0\api_task.AssemblyInfo.cs
+D:\projects\api_task\obj\Debug\net6.0\api_task.csproj.CoreCompileInputs.cache
+D:\projects\api_task\obj\Debug\net6.0\api_task.MvcApplicationPartsAssemblyInfo.cs
+D:\projects\api_task\obj\Debug\net6.0\api_task.MvcApplicationPartsAssemblyInfo.cache
