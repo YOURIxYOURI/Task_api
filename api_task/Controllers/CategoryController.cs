@@ -16,7 +16,7 @@ namespace api_task.Controllers
             _configuration = configuration;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetProduct(int id)
+        public async Task<ActionResult<IEnumerable<Category>>> GetProduct()
         {
             return _context.category.ToList();
         }

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "duCU6LIKT4Lsg2SW3gT5CdICSnRnNWr0nlGx0gxJ6tU=",
+  "Source": "api_task",
+  "BasePath": "_content/api_task",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

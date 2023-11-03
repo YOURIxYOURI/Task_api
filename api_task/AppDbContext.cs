@@ -15,7 +15,7 @@ namespace api_task
         public DbSet<User> user { get; set; }
         public DbSet<Quest> task { get; set; }
         public DbSet<Category> category { get; set; }
-        public DbSet<State> state { get; set; }
+        public DbSet<State>state { get; set; }
         public DbSet<Comment> comment { get; set; }
         public DbSet<Tag> tag { get; set; }
         public DbSet<Priority> priority { get; set; }

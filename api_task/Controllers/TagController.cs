@@ -34,7 +34,7 @@ namespace api_task.Controllers
         [HttpPost("{nazwa}")]
         public void CreateProduct(string nazwa)
         {
-            _context.tag.Add(new Models.Tag { Name = nazwa});
+            _context.tag.Add(new Tag { Name = nazwa});
             _context.SaveChangesAsync();
         }
 
