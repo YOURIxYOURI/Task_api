@@ -21,7 +21,7 @@ namespace api_task.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Tag>>> GetProduct(int id)
+        public async Task<ActionResult<IEnumerable<Tag>>> GetTag(int id)
         {
             var product = await _context.task.FindAsync(id);
             if (product == null)
@@ -32,14 +32,14 @@ namespace api_task.Controllers
         }
 
         [HttpPost("{nazwa}")]
-        public void CreateProduct(string nazwa)
+        public void CreateTag(string nazwa)
         {
             _context.tag.Add(new Tag { Name = nazwa});
             _context.SaveChangesAsync();
         }
 
         [HttpPut("{TaskId},{TagId}")]
-        public async Task<IActionResult> UpdateProduct(int TaskID, int TagID)
+        public async Task<IActionResult> UpdateTag(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);
             var taq = await _context.tag.FindAsync(TagID);
@@ -55,7 +55,7 @@ namespace api_task.Controllers
 
 
         [HttpDelete("{TaskId},{TagId}")]
-        public async Task<IActionResult> DeleteProduct(int TaskID, int TagID)
+        public async Task<IActionResult> DeleteTag(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);
             var taq = await _context.tag.FindAsync(TagID);

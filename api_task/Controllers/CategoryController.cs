@@ -16,12 +16,12 @@ namespace api_task.Controllers
             _configuration = configuration;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetProduct()
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategorys()
         {
             return _context.category.ToList();
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetProductBy(int id)
+        public async Task<ActionResult<Category>> GetCategoryBy(int id)
         {
             var product = await _context.task.FindAsync(id);
             if (product == null)
@@ -31,13 +31,13 @@ namespace api_task.Controllers
             return product.Category;
         }
         [HttpPost("{nazwa}")]
-        public void CreateProduct(string nazwa)
+        public void CreateCategory(string nazwa)
         {
             _context.category.Add(new Category { Name = nazwa });
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
         [HttpPut("{TaskId},{TagId}")]
-        public async Task<IActionResult> UpdateProduct(int TaskID, int TagID)
+        public async Task<IActionResult> UpdateCategory(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);
             var cat = await _context.category.FindAsync(TagID);
@@ -53,7 +53,7 @@ namespace api_task.Controllers
 
 
         [HttpDelete("{TaskId},{TagId}")]
-        public async Task<IActionResult> DeleteProduct(int TaskID, int TagID)
+        public async Task<IActionResult> DeleteCategory(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);
             var cat = await _context.category.FindAsync(TagID);

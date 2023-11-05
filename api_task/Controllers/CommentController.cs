@@ -22,7 +22,7 @@ namespace api_task.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetProduct(int id)
+        public async Task<ActionResult<IEnumerable<Comment>>> GetComments(int id)
         {
             var product = await _context.task.FindAsync(id);
             if (product == null)
@@ -32,7 +32,7 @@ namespace api_task.Controllers
             return product.Comments;
         }
         [HttpPut("{id},{desc}")]
-        public async Task<IActionResult> PutProduct(int id, string desc)
+        public async Task<IActionResult> PutComment(int id, string desc)
         {
             var com = await _context.comment.FindAsync(id);
             if (com == null)
@@ -45,7 +45,7 @@ namespace api_task.Controllers
         }
 
         [HttpPost("{nazwa},{taskID}")]
-        public void CreateProduct(string nazwa,int taskID)
+        public void CreateComment(string nazwa,int taskID)
         {
             var task = _context.task.Find(taskID);
             var com = new Comment { Description = nazwa };
@@ -55,7 +55,7 @@ namespace api_task.Controllers
         }
 
         [HttpDelete("{TaskId},{TagId}")]
-        public async Task<IActionResult> DeleteProduct(int TaskID, int TagID)
+        public async Task<IActionResult> DeleteComment(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);
             var com = await _context.comment.FindAsync(TagID);

@@ -20,13 +20,13 @@ namespace api_task.Controllers
         }
         
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Quest>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Quest>>> GetQuests()
         {
             return await _context.task.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Quest>> GetProduct(int id)
+        public async Task<ActionResult<Quest>> GetQuest(int id)
         {
             var product = await _context.task.FindAsync(id);
             if (product == null)
@@ -36,7 +36,7 @@ namespace api_task.Controllers
             return product;
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Quest>>> GetProductByUser(int id)
+        public async Task<ActionResult<IEnumerable<Quest>>> GetQuestByUser(int id)
         {
             var user = await _context.user.FindAsync(id);
             if (user == null)
@@ -47,7 +47,7 @@ namespace api_task.Controllers
         }
 
         [HttpPost("{Name},{desc},{userID},{categoryID},{stateID},{PriorityID}")]
-        public async Task<IActionResult> CreateProduct(string nazwa, string desc, int userId, int categoryId,int stateId, int priorityId)
+        public async Task<IActionResult> CreateQuest(string name, string desc, int userId, int categoryId,int stateId, int priorityId)
         {
             var user = _context.user.Find(userId);
             var cat = _context.category.Find(categoryId);
@@ -57,13 +57,13 @@ namespace api_task.Controllers
             {
                 return NotFound();
             }
-            _context.task.Add(new Models.Quest { Name = nazwa,Description = desc, User = user,Category = cat, State = state, Priority = prio});
+            _context.task.Add(new Models.Quest { Name = name,Description = desc, User = user,Category = cat, State = state, Priority = prio});
             _context.SaveChanges();
             return NoContent();
         }
 
         [HttpPut("{id},{Name},{desc},{categoryID},{stateID},{PriorityID}")]
-        public async Task<IActionResult> UpdateProduct(int id,string nazwa, string desc,int categoryId, int stateId, int priorityId)
+        public async Task<IActionResult> UpdateQuest(int id,string nazwa, string desc,int categoryId, int stateId, int priorityId)
         {
             var task = _context.task.Find(id);
             var cat = _context.category.Find(categoryId);
@@ -78,11 +78,11 @@ namespace api_task.Controllers
             task.Category = cat;
             task.State = state;
             task.Priority = prio;
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return NoContent();
         }
         [HttpPut("{id},{UserID}")]
-        public async Task<IActionResult> UpdateUser(int id, int userId)
+        public async Task<IActionResult> UpdateQuest(int id, int userId)
         {
             var user = _context.user.Find(userId);
             if (user == null)
@@ -107,7 +107,7 @@ namespace api_task.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteQuest(int id)
         {
             var product = await _context.task.FindAsync(id);
             if (product == null)

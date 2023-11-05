@@ -20,12 +20,12 @@ namespace api_task.Controllers
             _configuration = configuration;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<State>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<State>>> GetStates()
         {
             return await _context.state.ToListAsync();
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<State>> GetProduct(int id)
+        public async Task<ActionResult<State>> GetState(int id)
         {
             var product = await _context.task.FindAsync(id);
             if (product == null)
@@ -34,9 +34,14 @@ namespace api_task.Controllers
             }
             return product.State;
         }
-
+        [HttpPost("{nazwa}")]
+        public void CreateState(string nazwa)
+        {
+            _context.state.Add(new State { Name = nazwa });
+            _context.SaveChangesAsync();
+        }
         [HttpPut("{TaskId},{TagId}")]
-        public async Task<IActionResult> UpdateProduct(int TaskID, int TagID)
+        public async Task<IActionResult> UpdateState(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);
             var state = await _context.state.FindAsync(TagID);

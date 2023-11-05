@@ -20,12 +20,12 @@ namespace api_task.Controllers
             _configuration = configuration;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Priority>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Priority>>> GetPrioritys()
         {
             return await _context.priority.ToListAsync();
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<Priority>> GetProduct(int id)
+        public async Task<ActionResult<Priority>> GetPriority(int id)
         {
             var product = await _context.task.FindAsync(id);
             if (product == null)
@@ -34,9 +34,14 @@ namespace api_task.Controllers
             }
             return product.Priority;
         }
-
+        [HttpPost("{nazwa}")]
+        public void CreatePriority(string nazwa)
+        {
+            _context.priority.Add(new Priority { Name = nazwa });
+            _context.SaveChanges();
+        }
         [HttpPut("{TaskId},{TagId}")]
-        public async Task<IActionResult> UpdateProduct(int TaskID, int TagID)
+        public async Task<IActionResult> UpdatePriority(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);
             var prio = await _context.priority.FindAsync(TagID);

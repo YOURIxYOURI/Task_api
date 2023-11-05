@@ -20,13 +20,13 @@ namespace api_task.Controllers
         }
         
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.user.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetProduct(int id)
+        public async Task<ActionResult<User>> GetUser(int id)
         {
             var product = await _context.user.FindAsync(id);
             if (product == null)
@@ -36,15 +36,15 @@ namespace api_task.Controllers
             return product;
         }
 
-        [HttpPost("{nazwa},{email},{password}")]
-        public void CreateProduct(string nazwa, string email, string pass)
+        [HttpPost("{nazwa},{email},{pass}")]
+        public void CreateUser(string nazwa, string email, string pass)
         {
             _context.user.Add(new User { Name = nazwa, Email = email, Password = pass});
             _context.SaveChangesAsync();
         }
 
         [HttpPut("{id},{nazwa},{email},{password}")]
-        public void UpdateProduct(int id, string nazwa, string email, string pass)
+        public void UpdateUser(int id, string nazwa, string email, string pass)
         {
             _context.user.FirstOrDefault(x=>x.Id==id).Name = nazwa;
             _context.user.FirstOrDefault(x => x.Id == id).Email = email;
@@ -53,7 +53,7 @@ namespace api_task.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
             var product = await _context.user.FindAsync(id);
             if (product == null)
