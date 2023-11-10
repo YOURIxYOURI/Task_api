@@ -38,7 +38,7 @@ namespace api_task.Controllers
             _context.SaveChangesAsync();
         }
 
-        [HttpPut("{TaskId},{TagId}")]
+        [HttpPut("{TaskID},{TagID}")]
         public async Task<IActionResult> UpdateTag(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);
@@ -54,7 +54,7 @@ namespace api_task.Controllers
         }
 
 
-        [HttpDelete("{TaskId},{TagId}")]
+        [HttpDelete("{TaskID},{TagID}")]
         public async Task<IActionResult> DeleteTag(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);

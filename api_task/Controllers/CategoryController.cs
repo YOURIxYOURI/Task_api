@@ -36,7 +36,7 @@ namespace api_task.Controllers
             _context.category.Add(new Category { Name = nazwa });
             _context.SaveChanges();
         }
-        [HttpPut("{TaskId},{TagId}")]
+        [HttpPut("{TaskID},{TagID}")]
         public async Task<IActionResult> UpdateCategory(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);
@@ -52,7 +52,7 @@ namespace api_task.Controllers
         }
 
 
-        [HttpDelete("{TaskId},{TagId}")]
+        [HttpDelete("{TaskID},{TagID}")]
         public async Task<IActionResult> DeleteCategory(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);

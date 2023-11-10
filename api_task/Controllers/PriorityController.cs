@@ -40,7 +40,7 @@ namespace api_task.Controllers
             _context.priority.Add(new Priority { Name = nazwa });
             _context.SaveChanges();
         }
-        [HttpPut("{TaskId},{TagId}")]
+        [HttpPut("{TaskID},{TagID}")]
         public async Task<IActionResult> UpdatePriority(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);

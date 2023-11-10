@@ -40,7 +40,7 @@ namespace api_task.Controllers
             _context.state.Add(new State { Name = nazwa });
             _context.SaveChangesAsync();
         }
-        [HttpPut("{TaskId},{TagId}")]
+        [HttpPut("{TaskID},{TagID}")]
         public async Task<IActionResult> UpdateState(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);

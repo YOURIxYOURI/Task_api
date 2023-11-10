@@ -46,7 +46,7 @@ namespace api_task.Controllers
             return user.Tasks;
         }
 
-        [HttpPost("{Name},{desc},{userID},{categoryID},{stateID},{PriorityID}")]
+        [HttpPost("{Name},{desc},{userId},{categoryId},{stateId},{priorityId}")]
         public async Task<IActionResult> CreateQuest(string name, string desc, int userId, int categoryId,int stateId, int priorityId)
         {
             var user = _context.user.Find(userId);
@@ -58,11 +58,11 @@ namespace api_task.Controllers
                 return NotFound();
             }
             _context.task.Add(new Models.Quest { Name = name,Description = desc, User = user,Category = cat, State = state, Priority = prio});
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return NoContent();
         }
 
-        [HttpPut("{id},{Name},{desc},{categoryID},{stateID},{PriorityID}")]
+        [HttpPut("{id},{nazwa},{desc},{categoryId},{stateId},{priorityId}")]
         public async Task<IActionResult> UpdateQuest(int id,string nazwa, string desc,int categoryId, int stateId, int priorityId)
         {
             var task = _context.task.Find(id);
@@ -81,7 +81,7 @@ namespace api_task.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
-        [HttpPut("{id},{UserID}")]
+        [HttpPut("{id},{userId}")]
         public async Task<IActionResult> UpdateQuest(int id, int userId)
         {
             var user = _context.user.Find(userId);
