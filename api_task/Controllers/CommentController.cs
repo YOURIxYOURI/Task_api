@@ -54,7 +54,7 @@ namespace api_task.Controllers
             _context.SaveChangesAsync();
         }
 
-        [HttpDelete("{TaskID},{TagID}")]
+        [HttpDelete("{TaskId},{TagId}")]
         public async Task<IActionResult> DeleteComment(int TaskID, int TagID)
         {
             var task = await _context.task.FindAsync(TaskID);

@@ -43,7 +43,7 @@ namespace api_task.Controllers
             _context.SaveChangesAsync();
         }
 
-        [HttpPut("{id},{nazwa},{email},{pass}")]
+        [HttpPut("{id},{nazwa},{email},{password}")]
         public void UpdateUser(int id, string nazwa, string email, string pass)
         {
             _context.user.FirstOrDefault(x=>x.Id==id).Name = nazwa;
